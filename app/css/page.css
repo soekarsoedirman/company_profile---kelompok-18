@@ -213,7 +213,7 @@
 .about-hero {
     text-align: center;
     padding-bottom: 50px;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
     position: relative;
 }
 
@@ -252,7 +252,7 @@
 }
 
 .vm-card {
-    background: white;
+    background: rgb(233, 233, 233);
     padding: 50px;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
