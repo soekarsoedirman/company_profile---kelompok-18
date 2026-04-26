@@ -243,9 +243,11 @@
 }
 
 .vision-mission {
+    padding-left: 25px;
+    padding-right: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 80px;
     margin-bottom: 80px;
 }
 
@@ -259,25 +261,17 @@
     overflow: hidden;
 }
 
-.vm-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 100%;
-    background: var(--blue-main);
-}
-
 .vm-card h3 {
     font-size: 1.8rem;
     color: var(--blue-dark);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .vm-card p {
     font-size: 1.1rem;
     color: var(--text-muted);
+    text-align: justify;
 }
 
 .founders-section {
