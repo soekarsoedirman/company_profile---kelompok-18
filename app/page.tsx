@@ -12,8 +12,12 @@ export default function Home() {
             Bersama <strong>18DEV</strong>, buat webite terbaik di Indonesia. Kami siap mendigitalkan bisnis Anda dengan cepat, aman, dan profesional.
           </p>
         </div>
-        <div className="hero-image logo-asl">
-          <h1>18DEV</h1>
+        <div className="hero-image">
+          <Image src="/image/p.png" 
+            alt="Cover 18DEV" 
+            width={600} 
+            height={400} 
+          />
         </div>
       </section>
 
