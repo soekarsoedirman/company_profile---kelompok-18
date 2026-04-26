@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18DEV - #ServiceAntiRibet</title>
+    <!-- Import Google Font untuk kesan profesional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* =======================================================
+           GLOBAL CSS - TEMA PROFESIONAL & MODERN
+           ======================================================= */
+        :root {
+            /* Warna yang lebih modern dan deep */
+            --blue-main: #023e8a; 
+            --blue-dark: #03045e;
+            --blue-light: #e0f2fe;
+            --orange-main: #f97316;
+            --orange-hover: #ea580c;
+            --orange-light: #ffedd5;
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            
+            /* Shadow yang lebih halus */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --shadow-float: 0 10px 30px rgba(2, 62, 138, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding: 60px 20px; 
+            display: flex;
+            flex-direction: column;
+            gap: 80px; 
+            align-items: center;
+        }
+
+        /* Container Halaman */
+        .content-wrapper {
+            background-color: var(--bg-surface);
+            width: 100%;
+            max-width: 1050px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 60px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .content-wrapper::before {
+            content: attr(data-page);
+            position: absolute;
+            top: -15px;
+            left: 40px;
+            background: linear-gradient(135deg, var(--orange-main), #f59e0b);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+        }
+
+        h1, h2, h3, h4 { 
+            color: var(--text-dark); 
+            margin-bottom: 15px; 
+            font-weight: 700;
+        }
+        
+        .text-center { text-align: center; }
+        .text-blue { color: var(--blue-main); }
+        
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: var(--radius-md); 
+        }
+
+        /* Tombol Modern */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--orange-main), var(--orange-hover));
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(249, 115, 22, 0.35);
+        }
+
+        /* ---------------------------------------------------
+           HALAMAN 1: HOME
+           --------------------------------------------------- */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(145deg, var(--blue-main), var(--blue-dark));
+            padding: 60px 50px;
+            border-radius: var(--radius-lg);
+            color: white;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-float);
+        }
+        
+        /* Ornamen Background Hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fbbf24; /* Aksen kuning */
+        }
+
+        .hero h1 { 
+            color: white; 
+            font-size: 3.5rem; 
+            margin-bottom: 15px; 
+            line-height: 1.1;
+            font-weight: 800;
+        }
+        .hero p { 
+            font-size: 1.1rem; 
+            opacity: 0.85; 
+            line-height: 1.6;
+        }
+        .hero-text { flex: 1.2; position: relative; z-index: 2; }
+        .hero-image { flex: 1; position: relative; z-index: 2; }
+        .hero-image img {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+        
+        .projects-section h2 { font-size: 2.2rem; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--blue-light);
+        }
+        .project-card img { 
+            margin-bottom: 15px; 
+            width: 100%; 
+            aspect-ratio: 4/3; 
+            object-fit: cover; 
+            border-radius: 12px;
+        }
+        .project-card h3 { font-size: 1.2rem; margin-bottom: 5px; color: var(--text-dark); }
+        
+        .link-more {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--blue-main);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .link-more::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%; height: 2px;
+            background: var(--orange-main);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .link-more:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .satisfaction-section { 
+            margin: 80px 0; 
+            padding: 60px 40px; 
+            background: var(--bg-body);
+            border-radius: var(--radius-lg);
+        }
+        .satisfaction-section h2 { font-size: 2.2rem; }
+        .circle-chart {
+            width: 200px; 
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(var(--orange-main) 98%, var(--border-color) 0);
+            position: relative;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15);
+        }
+        .circle-chart::before {
+            content: ""; 
+            position: absolute;
+            width: 160px; 
+            height: 160px;
+            background-color: var(--bg-body);
+            border-radius: 50%;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .circle-value {
+            position: relative; 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            color: var(--blue-dark);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #fffcf9, #fff7ed);
+            border: 1px solid var(--orange-light);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .cta-section h2 { font-size: 2.2rem; color: var(--text-dark); }
+        .cta-section p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* ---------------------------------------------------
+           HALAMAN 2: SERVICE
+           --------------------------------------------------- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; color: var(--blue-dark); }
+        .section-header p { font-size: 1.1rem; color: var(--text-muted); }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .service-item {
+            background: white;
+            padding: 40px 25px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        .service-item:hover { 
+            transform: translateY(-8px); 
+            box-shadow: var(--shadow-float); 
+            border-color: var(--blue-light);
+        }
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: var(--blue-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px auto;
+            color: var(--blue-main);
+        }
+        .service-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .service-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .terms-box {
+            background: white;
+            border-left: 6px solid var(--orange-main);
+            padding: 40px 50px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .terms-box h3 { font-size: 1.8rem; color: var(--blue-dark); margin-bottom: 15px;}
+        .terms-box p { color: var(--text-muted); margin-bottom: 25px; font-size: 1.05rem; }
+        .terms-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            list-style: none;
+        }
+        .terms-list li { 
+            background: var(--bg-body);
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1rem; 
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+        .terms-list strong { color: var(--blue-main); display: block; margin-bottom: 5px; font-size: 1.1rem; }
+
+        /* ---------------------------------------------------
+           HALAMAN 3: ABOUT
+           --------------------------------------------------- */
+        .about-hero {
+            text-align: center;
+            padding-bottom: 50px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .about-hero h2 { 
+            color: var(--orange-main); 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+            letter-spacing: 3px; 
+            font-weight: 800;
+        }
+        .about-hero h1 { 
+            font-size: 4.5rem; 
+            margin: 10px 0; 
+            color: var(--blue-dark);
+            letter-spacing: -1px;
+        }
+        .badge-since {
+            display: inline-block;
+            background: var(--blue-light);
+            color: var(--blue-main);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .vm-card {
+            background: white;
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+            background: var(--blue-main);
+        }
+        .vm-card h3 { 
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            margin-bottom: 20px;
+        }
+        .vm-card p { font-size: 1.1rem; color: var(--text-muted); }
+
+        .founders-section { text-align: center; }
+        .founders-section h3 { font-size: 2.2rem; margin-bottom: 40px; color: var(--blue-dark); }
+        .founders-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+        .founder-card {
+            transition: transform 0.3s ease;
+        }
+        .founder-card:hover { transform: translateY(-10px); }
+        .img-ring {
+            display: inline-block;
+            padding: 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange-main), var(--blue-main));
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-md);
+        }
+        .founder-card .circle-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            display: block;
+        }
+        .founder-card h4 { font-size: 1.4rem; margin-bottom: 5px; }
+        .founder-card p { color: var(--orange-main); font-weight: 600; font-size: 1rem;}
+
+        /* ---------------------------------------------------
+           HALAMAN 4: CONTACT
+           --------------------------------------------------- */
+        .contact-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px 40px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--blue-light);
+            transform: translateX(5px);
+        }
+        .contact-item .icon {
+            font-size: 2rem;
+            background: var(--blue-light);
+            color: var(--blue-main);
+            width: 70px; height: 70px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+        .contact-item p { margin: 0; color: var(--text-muted); font-size: 1.05rem; }
+        .contact-item strong { 
+            font-size: 1.3rem; 
+            color: var(--blue-dark); 
+            display: block; 
+            margin-bottom: 8px; 
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 30px; }
+            .hero-text { order: 2; }
+            .hero-image { order: 1; margin-bottom: 20px; }
+            .terms-list { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 40px 20px; }
+            .projects-grid, .services-grid, .vision-mission { grid-template-columns: 1fr; }
+            .founders-grid { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 2.5rem; }
+            .contact-item { flex-direction: column; text-align: center; gap: 15px; padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         HALAMAN 1: HOME
+         ========================================== -->
+    <main class="content-wrapper" id="home" data-page="1. Home">
+        <section class="hero">
+            <div class="hero-text">
+                <div class="hero-badge">🚀 #ServiceAntiRibet</div>
+                <h1>Kembangkan Bisnis<br>Tanpa Kerumitan</h1>
+                <p>Bersama <strong>18DEV</strong>, rasakan pengalaman Home Service Teknisi Pertama di Indonesia. Kami siap mendigitalkan bisnis Anda dengan cepat, aman, dan profesional.</p>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/600x400/03045e/ffffff?text=Ilustrasi+Digital+18DEV" alt="Cover 18DEV">
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <h2 class="text-center">Portofolio Terbaik Kami</h2>
+            <p class="text-center" style="color: var(--text-muted); margin-bottom: 30px;">Beberapa sistem yang telah sukses kami kembangkan.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/400x300/f8fafc/023e8a?text=Web+Corporate" alt="Proyek Web">
+                    <h3>Corporate Website</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Manufaktur & Retail</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x300/f8fafc/023e8a?text=Aplikasi+POS" alt="Proyek Aplikasi">
+                    <h3>Mobile POS App</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Sistem Kasir UMKM</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x300/f8fafc/023e8a?text=E-Learning" alt="Proyek E-Learning">
+                    <h3>Sistem E-Learning</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">LMS Kampus & Sekolah</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="link-more">Lihat Portofolio Lainnya &rarr;</a>
+            </div>
+        </section>
+
+        <section class="satisfaction-section text-center">
+            <h2>Indeks Kepuasan Klien</h2>
+            <p style="color: var(--text-muted);">Bukti nyata dari pelayanan cepat tanggap kami.</p>
+            
+            <div class="circle-chart">
+                <div class="circle-value">98%</div>
+            </div>
+            
+            <p style="font-size: 1.1rem;">Klien kami menyatakan <strong>sangat puas</strong> dengan ketepatan waktu <br> dan hasil sistem yang dikembangkan.</p>
+        </section>
+
+        <section class="cta-section text-center">
+            <h2>Siap Mendigitalkan Bisnis Anda?</h2>
+            <p style="margin-bottom: 30px;">Jadwalkan konsultasi gratis hari ini dan nikmati layanan tanpa ribet.</p>
+            <a href="#" class="btn-primary">Mulai Proyek Sekarang</a>
+        </section>
+    </main>
+
+
+    <!-- ==========================================
+         HALAMAN 2: SERVICE
+         ========================================== -->
+    <main class="content-wrapper" id="service" data-page="2. Service">
+        <div class="section-header">
+            <h2>Layanan Utama Kami</h2>
+            <p>Solusi teknologi komprehensif yang dirancang untuk kebutuhan spesifik Anda</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="icon-wrapper">🌐</div>
+                <h3>Web Development</h3>
+                <p>Pembuatan website Company Profile, Landing Page, hingga Portal Berita.</p>
+            </div>
+            <div class="service-item">
+                <div class="icon-wrapper">📱</div>
+                <h3>App Development</h3>
+                <p>Aplikasi native Android & iOS berkinerja tinggi untuk bisnis Anda.</p>
+            </div>
+            <div class="service-item">
+                <div class="icon-wrapper">🎓</div>
+                <h3>E-Learning</h3>
+                <p>Platform pembelajaran interaktif dan sistem manajemen kelas online.</p>
+            </div>
+            <div class="service-item">
+                <div class="icon-wrapper">🛒</div>
+                <h3>E-Commerce</h3>
+                <p>Toko online profesional yang siap meningkatkan penjualan Anda.</p>
+            </div>
+        </div>
+
+        <div class="terms-box">
+            <h3>Ketentuan Layanan</h3>
+            <p>Kami menjunjung tinggi transparansi. Berikut adalah standar kerja sama dengan 18DEV:</p>
+            <ul class="terms-list">
+                <li>
+                    <strong>Sistem Pembayaran Ringan</strong>
+                    Pembayaran Uang Muka (DP) sebesar 50% sebelum proyek dimulai, dan pelunasan dilakukan setelah serah terima.
+                </li>
+                <li>
+                    <strong>Jaminan Revisi</strong>
+                    Kami memberikan garansi revisi minor sebanyak 3x secara gratis pasca rilis tahap pertama.
+                </li>
+                <li>
+                    <strong>SLA Pengerjaan Cepat</strong>
+                    Estimasi penyelesaian rata-rata dalam 14 - 30 Hari kerja (menyesuaikan kompleksitas fitur).
+                </li>
+                <li>
+                    <strong>Home Service Teknisi</strong>
+                    Layanan eksklusif teknisi siap panggil (online/on-site) jika terdapat kendala darurat pada sistem Anda.
+                </li>
+            </ul>
+        </div>
+    </main>
+
+
+    <!-- ==========================================
+         HALAMAN 3: ABOUT
+         ========================================== -->
+    <main class="content-wrapper" id="about" data-page="3. About">
+        <section class="about-hero">
+            <h2>Tentang Kami</h2>
+            <h1>18DEV</h1>
+            <div class="badge-since">Established in 1962</div>
+        </section>
+
+        <section class="vision-mission">
+            <div class="vm-card">
+                <h3>Visi Perusahaan</h3>
+                <p>Menciptakan dunia yang terhubung secara elektronik dan menghadirkan solusi teknologi cerdas yang secara nyata mempermudah kehidupan bermasyarakat di era digital.</p>
+            </div>
+            <div class="vm-card">
+                <h3>Misi Kami</h3>
+                <p>Berkomitmen memajukan UMKM Indonesia dengan menyediakan akses pembuatan website dan sistem manajemen yang terjangkau, mudah dikelola, dan 100% #ServiceAntiRibet.</p>
+            </div>
+        </section>
+
+        <section class="founders-section">
+            <h3>Pionir di Balik 18DEV</h3>
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="img-ring">
+                        <img src="https://placehold.co/300x300/f8fafc/023e8a?text=Foto+Ahmad" alt="Bapak Ahmad" class="circle-img">
+                    </div>
+                    <h4>Bapak Ahmad</h4>
+                    <p>Co-Founder & CEO</p>
+                </div>
+                <div class="founder-card">
+                    <div class="img-ring">
+                        <img src="https://placehold.co/300x300/f8fafc/023e8a?text=Foto+Budi" alt="Bapak Budi" class="circle-img">
+                    </div>
+                    <h4>Bapak Budi</h4>
+                    <p>Co-Founder & CTO</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ==========================================
+         HALAMAN 4: CONTACT
+         ========================================== -->
+    <main class="content-wrapper" id="contact" data-page="4. Contact">
+        <div class="section-header">
+            <h2>Hubungi Kami</h2>
+            <p>Tim dukungan kami siap merespon pertanyaan dan kebutuhan Anda kapan saja.</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">🏢</div>
+                    <div>
+                        <strong>Headquarters</strong>
+                        <p>Gedung 18DEV, Jl. Teknologi Bangsa No. 18<br>Jakarta Selatan, Indonesia 12345</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">💬</div>
+                    <div>
+                        <strong>Konsultasi & Dukungan (24/7)</strong>
+                        <p>+62 812 3456 7890 (WhatsApp / Telepon)</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email Korespondensi</strong>
+                        <p>halo@18dev.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
